@@ -27,20 +27,29 @@ export default function Question(props){
         return doc.body.textContent
     }
 
+    function checkOption(option, id){
+        if(option === props.correctAnswer)
+        {
+            props.updateCorrectCount(prevCount => prevCount + 1)
+        }
+        const btn = document.getElementById(id)
+        btn.style.backgroundColor = "#D6DBF5"
+    }
+
     
-    const answers = shuffle(props.incorrectAnswers.concat(props.correctAnswer))
-    const answerElements = answers.map(answer => {
+    const options = shuffle(props.incorrectAnswers.concat(props.correctAnswer))
+    const optionElements = options.map(option => {
         const id = nanoid()
 
         return(
-            <button key={id} className='quiz_options'>{answer}</button>
+            <button key={id} id = {id} className='quiz_options' onClick={() => checkOption(option, id)}>{convertStringToHTMLText(option)}</button>
         )
     })
     return(
-        <div>
-            <h1>{convertStringToHTMLText(props.question)}</h1>
-            <div>
-                {answerElements}
+        <div className='questionCard'>
+            <h3 className='questionCardHeader'>{convertStringToHTMLText(props.question)}</h3>
+            <div className='quiz_options_container'>
+                {optionElements}
             </div>
         </div>
     )

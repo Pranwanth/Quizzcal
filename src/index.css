@@ -11,6 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.App{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .start-page{
   display: flex;
@@ -42,9 +47,51 @@ code {
   color: #F5F7FB;
 }
 
+.quizPage{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.quiz_options_container{
+  display: flex;
+  justify-content: space-evenly;
+}
 .quiz_options{
   border: 1px solid #4D5B9E;
   border-radius: 8px;
-
+  background-color: #F5F7FB;
   margin: 10px;
+
+  font-family: "Inter";
+  font-size: 12px;
+}
+
+/* .questionCard{
+  
+} */
+.questionCardHeader{
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+
+  color: #293264;
+}
+
+.question_line_break{
+  border: 1px solid #dbbef0;
+}
+
+.checkAnswerBtn{
+  width: 120px;
+  height: 35px;
+  background: #4D5B9E;
+  border-radius: 10px;
+  color: #F5F7FB;
+
+  font-family: "Inter";
+  font-size: 12px;
+  text-align: center;
+
+  align-self: center;
 }
