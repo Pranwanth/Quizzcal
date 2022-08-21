@@ -10,17 +10,17 @@ export default function QuizPage(){
     function checkAnswer(){
         setDisplayResult(true)
     }
-    
     React.useEffect(() => {
         fetch("https://opentdb.com/api.php?amount=5&type=multiple")
         .then(res => res.json())
         .then(data => setQuizData(data.results))
     }, [])
     const questionCards = quizData.map(card => {
+        const divId = nanoid()
         const id = nanoid()
         const hrId = nanoid()
         return(
-            <div>
+            <div key={divId}>
                 <Question 
                     key={id}
                     question={card.question}

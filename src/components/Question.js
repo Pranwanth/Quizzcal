@@ -1,6 +1,12 @@
 import { nanoid } from 'nanoid'
+import React from 'react';
 
 export default function Question(props){
+    const [options, setOptions] = React.useState([])
+    React.useEffect(() => {
+        const shuffledOptions = shuffle(props.incorrectAnswers.concat(props.correctAnswer))
+        setOptions(shuffledOptions)
+    }, [props.incorrectAnswers, props.correctAnswer])
     function shuffle(array) {
         let currentIndex = array.length
         let randomIndex
@@ -28,16 +34,16 @@ export default function Question(props){
     }
 
     function checkOption(option, id){
-        if(option === props.correctAnswer)
+        /* if(option === props.correctAnswer)
         {
             props.updateCorrectCount(prevCount => prevCount + 1)
-        }
+        } */ //This is causing the shuffle to run twice
         const btn = document.getElementById(id)
         btn.style.backgroundColor = "#D6DBF5"
     }
 
     
-    const options = shuffle(props.incorrectAnswers.concat(props.correctAnswer))
+    
     const optionElements = options.map(option => {
         const id = nanoid()
 
